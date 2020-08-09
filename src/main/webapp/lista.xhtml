@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+    <ui:composition template="template/template.xhtml">
+
+        <ui:define name="title">
+            Crear Personas
+        </ui:define> 
+        <ui:define name="content">
+
+
+     
+            <h1>Ver Contactos</h1>
+
+
+            <h:form>
+            <h:dataTable value="#{personaBean.listado}" var="person"  class="table">
+
+
+
+                <h:column> 
+                    <f:facet name="header">Cedula</f:facet>
+                        #{person.cedula}
+                </h:column>
+
+                <br/>
+                <br/>
+
+                <h:column> 
+                    <f:facet name="header">Nombre</f:facet>
+                        #{person.nombre}
+                </h:column>
+
+                <br/>
+                <br/>
+
+                <h:column> 
+                    <f:facet name="header">Telefonos</f:facet>
+                        #{person.telefonos}
+                </h:column>
+
+
+                
+                 <h:column> 
+                    <f:facet name="header">Acciones</f:facet>
+                    <h:commandButton action="#{personaBean.editar(person.cedula)}"  value="Editar"/> 
+                     
+                </h:column>
+                
+                
+                
+            </h:dataTable>
+          
+            </h:form>
+                
+        </ui:define>          
+    </ui:composition>
+
+
+
+
+</html>

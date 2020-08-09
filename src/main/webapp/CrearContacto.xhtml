@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"> 
+
+    
+    <h:head>
+        <f:metadata>
+            
+            <f:viewParam name="cedula" value="#{personaBean.cedula}">   </f:viewParam>
+            
+        </f:metadata>
+        
+    </h:head>
+    
+    
+    <ui:composition template="template/template.xhtml">
+        #{personaBean.titulo}
+    <ui:define name="title">
+       
+        
+    </ui:define> 
+        <ui:define name="content">
+            
+            <h:form class="form-horizontal form-material">
+                                <div class="form-group">
+                                    <label class="col-md-12">Cedula</label>
+                                    <div class="col-md-12">
+                                        <h:inputText id="txtcedula" value="#{personaBean.newPersona.cedula}" />
+                                        </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="example-email" class="col-md-12">Nombre</label>
+                                    <div class="col-md-12">
+                                        <h:inputText value="#{personaBean.newPersona.nombre}" />
+                                        </div>
+                                </div>
+              
+                <h:commandButton action="#{personaBean.AddTelefono()}" value="Agregar" class="btn btn-success">
+                <f:ajax render="tabla" execute="tabla"/>
+               </h:commandButton>
+                
+                
+                
+                  <h:dataTable id="tabla" value="#{personaBean.newPersona.telefonos}" var="telefono">
+                <h:column> 
+                    <f:facet  name="header">Numero</f:facet>
+                    <h:inputText value="#{telefono.numero}"/>  
+                </h:column>   
+                <h:column> 
+                    <f:facet  name="header">Tipo Telefono</f:facet>  
+                    <h:inputText value="#{telefono.tipoTelefono}"/>  
+                </h:column>
+                
+                 <h:column> 
+                    <f:facet  name="header"></f:facet>  
+                    #{telefono.setPersona(personaBean.newPersona)}
+                </h:column>
+
+            </h:dataTable>
+                                    
+                           
+                                <div class="form-group">
+                                    <div class="col-sm-12">
+                                       
+                                        <h:commandButton action="#{personaBean.guardarDatos()}" value="Guardar" class="btn btn-success"/>
+                                        
+                                    </div>
+                                </div>
+                
+                
+                
+                            </h:form>
+            
+          <!--  
+        <h:form>  
+
+            Cedula:<h:inputText id="txtcedula" value="#{personaBean.newPersona.cedula}"/> <h:message for="txtcedula"/><br/>
+            Nombre: <h:inputText value="#{personaBean.newPersona.nombre}"/> <br/>
+
+            <br/>
+            <br/>
+
+            <h:commandButton action="#{personaBean.AddTelefono()}" value="Agregar">
+                <f:ajax   render="tabla" execute="tabla" />
+            </h:commandButton>
+
+            <h:dataTable id="tabla" value="#{personaBean.newPersona.telefonos}" var="telefono">
+                <h:column> 
+                    <f:facet  name="header">Numero</f:facet>
+                    <h:inputText value="#{telefono.numero}"/>  
+                </h:column>   
+                <h:column> 
+                    <f:facet  name="header">Tipo Telefono</f:facet>  
+                    <h:inputText value="#{telefono.tipoTelefono}"/>  
+        
+                </h:column>
+                
+                 <h:column> 
+                    <f:facet  name="header">ced</f:facet>  
+                    #{telefono.setPersona(personaBean.newPersona)}
+                </h:column>
+            
+                
+                
+            </h:dataTable>
+
+            <br/>
+            <br/>
+            <br/>
+
+            <h:commandButton action="#{personaBean.guardarDatos()}" value="Guardar"/>
+            <br/>
+
+
+        </h:form>
+         /////////////   
+          -->
+            
+      </ui:define>
+
+        
+    </ui:composition>
+
+    
+    <h:head>
+
+    </h:head> 
+
+    <h:body>
+        <h1>Ingreso Contactos</h1>
+    </h:body> 
+
+
+</html>
